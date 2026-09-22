@@ -1,17 +1,42 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--최신 표준 html5-->
 <html>
     <head>
-        <meta charset="UTF-8"> //웹페이지에 사용된 글자의 인코딩 방식을 UTF-8로 지정, 깨짐 방지
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> //기기에 따라 가로 폭과 화면배율 자동 맞춤
+        <meta charset="UTF-8"> <!--웹페이지에 사용된 글자의 인코딩 방식을 UTF-8로 지정, 깨짐 방지-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--기기에 따라 가로 폭과 화면배율 자동 맞춤-->
+        
         <style>
         html, body, body > div, #container, #container-uiarea { height: 100%; }
         </style> //html, body, body 바로 아래 자식 <div>태그들의 세로 길이 100% 채움
-            //#container, #container-uiarea 이거 뭔지 확인ㄱ
+        <!--#container : 브라우저창(html body) 전체 크기를 꽉 채우는 sapui5 기본 틀-->
+        <!--#container-uiarea : container 내에서 sapui5 프로그램 렌더링하는 곳-->
+        
+        <title>창 이름</title>
 
+        <!--sapui5 부트스트래핑-->
+        <!--sapui5 라이브러리 로드
+        id : src을 통해 찾아간 sapui5 엔진의 설정값 찾아감
+        src : sapui5 엔진 경로
+        data-sap-ui-theme : 테마 디자인, sap_fiori_3는 sap 표준 디자인
+        data-sap-ui-libs : sapui5 엔진 실행 직후 화면 구성하는데 필요한 ui 라이브러리 미리 로드, sap.m은 표준 ui 라이브러리
+        data-sap-ui-async : 비동기 방식(동시에 여러 개 빠르게 호출해서 웹페이지 버벅임 방지)
+        data-sap-ui-onInit : sapui5 엔진 실행 직후 가장 먼저 실행할 작업
+        data-sap-ui-resourceroots : sapui5 엔진이 작업하는 sap.training.exc(네임스페이스) 위치를 자신 로컬 위치("./")로 지정(연결)
+        -->
+        <script
+        id="sap-ui-bootstrap"
+        src="https://ui5.sap.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_fiori_3"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-async="true"
+		data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
+		data-sap-ui-resourceroots='{
+			"sap.training.exc": "./"
+		}'>
+        </script>
     </head>
 
     <body>
-
+        <div></div>
     </body>
 
 </html>
