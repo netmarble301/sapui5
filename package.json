@@ -20,7 +20,6 @@
   "license": "ISC",
   "author": "jjh <netmarble301@gmail.com>",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,7 +31,7 @@
     "@sap-ux/ui5-middleware-fe-mockserver": "2"
   },
   "private": true,
-  "main": "html/index.html",
+  "main": "webapp/index.html",
   "ui5": {
     "dependencies": [
       "@sap/ux-ui5-tooling",
