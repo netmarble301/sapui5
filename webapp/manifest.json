@@ -1,0 +1,88 @@
+{
+    "_version": "1.28.0",
+    "sap.app": {
+        "id": "sap.training.exc",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "일단 생략(나중에 i18n 만들 필요가 있음?)",
+        "description": "일단 생략(나중에 i18n 만들 필요가 있음?)",
+        "dataSources": {
+            "mainService": {
+                "uri": "백엔드 sap서버의 OData 서비스 주소 경로(일단 localUri로)",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.96.36",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+        "compact": false,
+        "cozy": true
+        },
+        "models": {
+            "ODataModel": {
+                "dataSource": "mainService",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "sap.training.exc.view",
+                "controlAggregation": "pages",
+                "controlId": "App"
+            },
+            "routes": [],
+            "targets": {}
+        },
+        "rootView": {
+            "viewName": "sap.training.exc.view.app",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}
