@@ -1,5 +1,8 @@
 # sapui5
 
-fiori & ai
+fiori
+for practice
+
+npm install '해 줘'
 
 made jjh
