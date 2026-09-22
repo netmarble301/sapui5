@@ -3,6 +3,6 @@
 fiori
 for practice
 
-npm install '해 줘'
+npm install '해 줘' (package.json 참고)
 
 made jjh
