@@ -26,17 +26,27 @@
         id="sap-ui-bootstrap"
         src="https://ui5.sap.com/resources/sap-ui-core.js"
         data-sap-ui-theme="sap_fiori_3"
-        data-sap-ui-libs="sap.m"
         data-sap-ui-async="true"
-		data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
+		data-sap-ui-onInit="module:sap/"
 		data-sap-ui-resourceroots='{
 			"sap.training.exc": "./"
 		}'>
         </script>
     </head>
-
-    <body>
-        <div></div>
+    <!--sapUiBody는 sapui5 앱에서 필수적으로 들어가야 하는 핵심 css클래스-->
+    <!--sapui5 id(식별자) 중요-->
+    <body class="sapUiBody" id="body">
+        <!--data-sap-ui-component는 "Component.js" 실행 명령어-->
+        <!--Component 역할은 manifest 설정 파일, view, controller 서로 연결 및 조율 역할-->
+        <!--data-id는 컴포넌트 인스턴스 id 지정(컴포넌트 id가 아님)-->
+        <!--data-name은 해당 네임스페이스 경로에 있는 manifest.json를 먼저 실행, manifest.json의 "sap.app"의 "id"와 같아야 함-->
+        <!--data-settings는 컴포넌트가 생성될 때 추가로 넘겨줄 초기 설정값-->
+        <!--즉 앱 실행 시 Component와 manifest가 가장 먼저 실행되도록 하는 것-->
+        <div
+        data-sap-ui-component
+        data-id="container"
+        data-name="sap.training.exc"
+        data-settings='{"id" : "sap.training.exc"}'>
+        </div>
     </body>
-
 </html>
