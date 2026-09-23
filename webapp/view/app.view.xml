@@ -1,3 +1,18 @@
 <!--manifest.json의 sap.ui5의 rootView(최초로 띄울 뷰(xml뷰 최상위 루트 화면으로)) 참고-->
-
-<!--나중에 view 브랜치ㄱ-->
+<!--app.view.xml은 view들 중에 뼈대 역할-->
+<!--controllerName : 짝을 이룰 컨트롤러 파일 경로-->
+<!--displayBlock : 해당 뷰가 화면 전체를 깔끔하게 차지하도록 설정-->
+<!--xmlns:mvc="sap.ui.core.mvc" : mvc 관련 라이브러리 네임스페이스 호출(mvc태그(예: <mvc:View>, <mvc:XMLView>) 사용 가능하도록)-->
+<!--xmlns="sap.m" : 네임스페이스를 따로 붙이지 않고 쓰는 태그들(예: <Shell>, <App>)이 sapui5의 모바일/반응형 ui 라이브러리(sap.m)의 컨트롤임을 선언-->
+<mvc:View controllerName="sap.training.exc.controller.app" displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+    <Shell>
+		<App>
+            <pages>
+                <!--사용자에게 실제 보여줄 overview.view.xml 화면-->
+                <!--mvc:XMLView viewName: 모듈화된 다른 화면을 가져다 꽂기, 즉 지금 이 자리에서 저 다른 XML 화면 파일을 읽어와서 내 화면의 일부로 렌더링-->
+                <!--*여기에 xml 재사용 가능*-->
+                <mvc:XMLView viewName="sap.training.exc.view.overview"/>
+            </pages>
+        </App>
+	</Shell>
+</mvc:View>

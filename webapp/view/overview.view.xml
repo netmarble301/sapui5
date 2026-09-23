@@ -1,0 +1,6 @@
+<!--app.view.xml의 mvc:XMLView viewName 참고-->
+<mvc:View xmlns="sap.m">
+    <Page title ="">
+
+    </Page>
+</mvc:View>
