@@ -1,5 +1,5 @@
 <!--app.view.xml의 mvc:XMLView viewName 참고-->
-<mvc:View xmlns="sap.m">
+<mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m">
     <Page title ="">
 
     </Page>

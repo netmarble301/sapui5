@@ -4,7 +4,7 @@ sap.ui.define(["sap/ui/core/UIComponent"],
     function (UIComponent) {
         "use strict"; //자바스크립트 오류 방지용'
 
-        //UIComponent의 기능을 물려받은 새로운 컴포넌트 클래스 sap.training.exc.Component를 생성
+        //UIComponent의 기능을 물려받은 새로운 컴포넌트 클래스를 sap.training.exc.Component에 생성
         return UIComponent.extend("sap.training.exc.Component", 
             {
                 //같은 폴더에 있는 manifest.json파일을 기반으로 세팅
