@@ -1,6 +1,29 @@
 <!--app.view.xml의 mvc:XMLView viewName 참고-->
-<mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m">
-    <Page title ="">
+<!--xmlns:mvc, xmlns:f, xmlns:core은 네임스페이스(주소)를 별칭으로 대신 사용. xml은 .사용 불가능 풀네임주소(sap.ui.core.mvc 등) 대신 별칭으로 쓸 수 밖에 없음-->
+<mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m" 
+xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+    <!--제목-->
+    <Page title ="제목 고민">
+
+        <!--콘텐츠 영역-->
+        <content>
+
+            <!--패널-->
+            <!--expandable : 접고 펼치기 가능, expanded : 디폴트 펼쳐져 있음-->
+            <Panel expandable="true" expanded="true" headerText="말머리 고민">
+                <content>
+
+                    <!--입력폼-->
+                    <!--열 레이아웃, 입력 가능-->
+                    <f:SimpleForm layout="ColumnLayout" editable="true">
+                    </f:SimpleForm>
+
+                    
+                </content>
+            </Panel>
+
+        </content>
 
     </Page>
 </mvc:View>
