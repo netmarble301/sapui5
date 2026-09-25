@@ -23,19 +23,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
-
   "devDependencies": {
-    "@ui5/cli": "^2.14.1",
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
     "@sap/ux-ui5-tooling": "1",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2"
+    "@ui5/cli": "^4.0.69"
   },
   "private": true,
   "main": "webapp/index.html",
   "ui5": {
     "dependencies": [
       "@sap/ux-ui5-tooling",
-      "@sap-ux/ui5-middleware-fe-mockservre"
+      "@sap-ux/ui5-middleware-fe-mockserver"
     ]
   },
   "sapuxLayer": "CUSTOMER_BASE"
