@@ -18,4 +18,9 @@ manifest.json의 odataVersion을 임시로 2.0으로 낮춤, uri의 ./는 현재
 제공 받은 localService(로컬 odata 서비스)는 항공 예약(Flight Booking) 및 고객 관리와 관련된 데이터 모델임
 
 
+live server 말고 SAPUI5 전용 툴링인 UI5 CLI 서빙 방식 쓰기 & ui5.yaml 생성하기 조사ㄱㄱ
+npm install --save-dev @ui5/cli@latest //UI5 CLI 최신 버전으로 업데이트 명령어
+명령어 : npx ui5 serve
+
+
 made jjh
