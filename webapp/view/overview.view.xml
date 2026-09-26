@@ -3,41 +3,93 @@
 <mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m" 
 xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
 
-    <!--제목-->
-    <Page title ="제목 고민">
-
-        <!--콘텐츠 영역-->
+    <Page title="항공 고객 및 예약 조회">
         <content>
-
-            <!--패널-->
-            <!--expandable : 접고 펼치기 가능, expanded : 디폴트 펼쳐져 있음-->
-            <Panel expandable="true" expanded="false" headerText="말머리 고민">
+            <Panel expandable="true" expanded="true" headerText="고객 목록">
                 <content>
+                    <Table id="customerTable" items="{customer>/}" mode="SingleSelectMaster" selectionChange=".onCustomerSelect">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="고객 리스트" level="H2"/>
+                                <ToolbarSpacer/>
+                                <SearchField placeholder="고객 이름 검색..." search=".onSearch" width="300px"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column><Text text="Customer No"/></Column>
+                            <Column><Text text="Name"/></Column>
+                            <Column><Text text="City"/></Column>
+                            <Column><Text text="Country"/></Column>
+                            <Column><Text text="Email"/></Column>
+                            <Column><Text text="Discount (%)"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <!-- customer> 모델 접두사 추가 완료 -->
+                                    <ObjectIdentifier title="{customer>CustomerNumber}" text="{customer>CustomerGuid}"/>
+                                    <Text text="{customer>CustomerName}"/>
+                                    <Text text="{customer>City}"/>
+                                    <Text text="{customer>Country}"/>
+                                    <Text text="{customer>Email}"/>
+                                    <ObjectNumber number="{customer>Discount}" unit="%"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
 
-                    <!--입력폼-->
-                    <!--열 레이아웃, 입력 가능-->
-                    <f:SimpleForm layout="ColumnLayout" editable="true">
-
-                        <!--<f:SimpleForm> 전용 태그, 툴바(<Toolbar>) 지정용-->
-                        <f:toolbar>
-                            <!--<f:SimpleForm> 내에서는 <Toolbar>를 반드시 <f:toolbar>와 함께 사용해야 함-->
-                            <Toolbar>
-                                <content>
-
-                                    <!--우측 배치하도록-->
-                                    <ToolbarSpacer/>
-
-                                    <Button icon="sap-icon://create" text="버튼 이름 고민 중"/>
-                                </content>
-                            </Toolbar>
-                        </f:toolbar>
+            <!-- 2. 선택된 고객의 상세 정보 및 예약 내역 패널 (Detail) -->
+            <Panel id="bookingPanel" expandable="true" expanded="false" headerText="Selected Customer Bookings (예약 상세 내역)">
+                <content>
+                    <!-- 고객 상세 심플폼 -->
+                    <f:SimpleForm id="customerDetailForm" layout="ColumnLayout" editable="false" title="선택된 고객 프로필">
+                        <f:content>
+                            <Label text="Form"/>
+                            <Text text="{selectedCustomer>/Form}"/>
+                            
+                            <Label text="Telephone"/>
+                            <Text text="{selectedCustomer>/Telephone}"/>
+                            
+                            <Label text="Street"/>
+                            <Text text="{selectedCustomer>/Street}"/>
+                        </f:content>
                     </f:SimpleForm>
 
-                    
+                    <!-- 예약 내역 테이블 -->
+                    <Table id="bookingTable" items="{booking>/}">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="관련 항공권 예약 정보 (UX_Booking)" level="H3"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column><Text text="Booking No"/></Column>
+                            <Column><Text text="Airline"/></Column>
+                            <Column><Text text="Connection"/></Column>
+                            <Column><Text text="Flight Date"/></Column>
+                            <Column><Text text="Class"/></Column>
+                            <Column><Text text="Payment"/></Column>
+                            <Column><Text text="Cancelled"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{booking>BookingNumber}"/>
+                                    <Text text="{booking>AirlineID}"/>
+                                    <Text text="{booking>ConnectionNumber}"/>
+                                    <Text text="{booking>FlightDate}"/>
+                                    <Text text="{booking>Class}"/>
+                                    <ObjectNumber number="{booking>ForeignCurrencyPayment}" unit="{booking>ForeignCurrency}"/>
+                                    <Text text="{booking>IsCancelled}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
                 </content>
             </Panel>
 
         </content>
-
     </Page>
 </mvc:View>
