@@ -10,7 +10,7 @@
         "description": "일단 생략(나중에 i18n 만들 필요가 있음?)",
         "dataSources": {
             "mainService": {
-                "uri": "백엔드 sap서버의 OData 서비스 주소 경로(일단 localUri로)",
+                "uri": "./localService/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
