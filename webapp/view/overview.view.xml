@@ -1,12 +1,12 @@
 <!--app.view.xml의 mvc:XMLView viewName 참고-->
 <!--xmlns:mvc, xmlns:f, xmlns:core은 네임스페이스(주소)를 별칭으로 대신 사용. xml은 .사용 불가능 풀네임주소(sap.ui.core.mvc 등) 대신 별칭으로 쓸 수 밖에 없음-->
-<mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m" 
-xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
-
-    <Page title="항공 고객 및 예약 조회">
+<mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <Page title="항공 고객 및 예약 조회(jjh)">
         <content>
-            <Panel expandable="true" expanded="true" headerText="고객 목록">
+            <Panel expandable="true" expanded="false" headerText="고객 및 예약 정보">
                 <content>
+                    <!--고객 리스트 테이블-->
+                    <!--items에 데이터 모델을 연결하면 테이블에 자동적으로 해당 모델의 데이터들을 반복 생성하고 화면에 렌더링해줌, {데이터모델/} 이렇게 해야함 /은 모델의 최상위 루트를 의미(데이터 배열 모두 가져와야 함)-->
                     <Table id="customerTable" items="{customer>/}" mode="SingleSelectMaster" selectionChange=".onCustomerSelect">
                         <headerToolbar>
                             <OverflowToolbar>
@@ -26,7 +26,6 @@ xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core
                         <items>
                             <ColumnListItem>
                                 <cells>
-                                    <!-- customer> 모델 접두사 추가 완료 -->
                                     <ObjectIdentifier title="{customer>CustomerNumber}" text="{customer>CustomerGuid}"/>
                                     <Text text="{customer>CustomerName}"/>
                                     <Text text="{customer>City}"/>
@@ -37,14 +36,13 @@ xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core
                             </ColumnListItem>
                         </items>
                     </Table>
-                </content>
-            </Panel>
 
-            <!-- 2. 선택된 고객의 상세 정보 및 예약 내역 패널 (Detail) -->
-            <Panel id="bookingPanel" expandable="true" expanded="false" headerText="Selected Customer Bookings (예약 상세 내역)">
-                <content>
-                    <!-- 고객 상세 심플폼 -->
-                    <f:SimpleForm id="customerDetailForm" layout="ColumnLayout" editable="false" title="선택된 고객 프로필">
+                    <Toolbar class="sapUiMediumMarginTop">
+                        <Title text="선택된 고객 상세 정보 및 예약 내역" level="H3"/>
+                    </Toolbar>
+
+                    <!--선택된 고객 상세-->
+                    <f:SimpleForm id="customerDetailForm" layout="ColumnLayout" editable="false" title="고객 프로필">
                         <f:content>
                             <Label text="Form"/>
                             <Text text="{selectedCustomer>/Form}"/>
@@ -57,8 +55,8 @@ xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core
                         </f:content>
                     </f:SimpleForm>
 
-                    <!-- 예약 내역 테이블 -->
-                    <Table id="bookingTable" items="{booking>/}">
+                    <!--예약 내역 테이블 -->
+                    <Table id="bookingTable" items="{booking>/}" class="sapUiMediumMarginTop">
                         <headerToolbar>
                             <OverflowToolbar>
                                 <Title text="관련 항공권 예약 정보 (UX_Booking)" level="H3"/>
@@ -89,7 +87,6 @@ xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core
                     </Table>
                 </content>
             </Panel>
-
         </content>
     </Page>
 </mvc:View>
