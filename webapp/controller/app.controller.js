@@ -5,5 +5,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],
         "use strict";
 
         //Controller 기능을 물려받은 새로운 컴포넌트 클래스를 sap.training.exc.controller.app에 생성
-        return Controller.extend("sap.training.exc.controller.app", { });
+        return Controller.extend("sap.training.exc.controller.app", {
+
+            //Component.js의 getContentDensityClass참고, 화면의 콘텐츠 밀도 실제 적용
+            onInit: function () {
+                this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+            }
+         });
     });

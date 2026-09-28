@@ -33,6 +33,10 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "./localService/data/UX_Booking.json"
       }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     }
   }
 }

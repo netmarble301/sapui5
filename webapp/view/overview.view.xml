@@ -3,7 +3,8 @@
 <mvc:View controllerName="sap.training.exc.controller.overview" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
     <Page title="항공 고객 및 예약 조회(jjh)">
         <content>
-            <Panel expandable="true" expanded="false" headerText="고객 및 예약 정보">
+            <!--해당 패널은 화면 크기에 맞춰 여백을 알아서 조절하고(sapUiResponsiveMargin), 공간이 좁은 스마트폰 화면에서는 아예 숨겨버리며(sapUiHideOnPhone), 가로 폭은 내용에 맞게 유연하게 채워라(width="auto")-->
+            <Panel class="sapUiResponsiveMargin sapUiHideOnPhone" width="auto" expandable="true" expanded="false" headerText="고객 및 예약 정보">
                 <content>
                     <!--고객 리스트 테이블-->
                     <!--items에 데이터 모델을 연결하면 테이블에 자동적으로 해당 모델의 데이터들을 반복 생성하고 화면에 렌더링해줌, {데이터모델/} 이렇게 해야함 /은 모델의 최상위 루트를 의미(데이터 배열 모두 가져와야 함)-->
