@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Dialog id="fragment2dialog" title="안녕">
+        <content>
+            <Text text="이것은 xml fragment2(다이얼로그를 fragment)"/>
+        </content>
+        <beginButton>
+            <Button text="닫기" press=".onCloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

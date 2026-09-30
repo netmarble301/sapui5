@@ -88,6 +88,11 @@
                     </Table>
                 </content>
             </Panel>
+
+            <!--xml fragment(그냥1과 다이얼로그2(컨트롤러 참고))-->
+            <core:Fragment fragmentName="sap.training.exc.view.xmlfragment" type="XML"/>
+            <!--다이얼로그 fragment는 뷰에 직접 쓰지 않고, 버튼 클릭 등 컨트롤러에서 동적으로 호출-->
+            <Button text="팝업 열기" icon="sap-icon://popup-window" press=".onOpenDialog" type="Emphasized"/>
         </content>
     </Page>
 </mvc:View>

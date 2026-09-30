@@ -2,8 +2,8 @@
 //sap/ui/model/Filter : 검색 및 조건 조회 위한 필터 객체 생성
 //sap/ui/model/FilterOperator : Filter를 비교 조건 연산을 정의
 //sap/ui/model/json/JSONModel : 자바스크립트 객체 데이터를 기반으로 클라이언트 측 JSON 모델을 생성하여 뷰와 데이터를 바인딩할 때 사용
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel"], 
-    function (Controller, Filter, FilterOperator, JSONModel) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel", "sap/ui/core/Fragment", "sap/ui/core/syncStyleClass"], 
+    function (Controller, Filter, FilterOperator, JSONModel, Fragment, syncStyleClass) {
     "use strict";
 
     return Controller.extend("sap.training.exc.controller.overview", {
@@ -70,6 +70,54 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/mode
             }
             */
             oBinding.filter(aFilters);
+        },
+
+        //xml fragment2 다이얼로그
+        //overview의 Button의 press 참고
+        //다이얼로그 fragment 오픈 함수 옛날방식
+        //sap/ui/core/Fragment 및 Fragment 파라미터가 필요함(맨 위 참고)!
+        /*
+        onOpenDialog: function () {
+            var oView = this.getView();
+            //다이얼로그가 아직 생성되지 않았다면 생성
+            if (!this.byId("fragment2dialog")) {
+                Fragment.load({
+                    id: oView.getId(),
+                    name: "sap.training.exc.view.xmlfragment2",
+                    controller: this
+                }).then(function (oDialog) {
+                    //뷰의 생명주기에 다이얼로그 연결
+                    oView.addDependent(oDialog);
+                    oDialog.open();
+                });
+            } else {
+                //이미 생성되어 있다면 바로 열기
+                this.byId("fragment2dialog").open();
+            }
+        },
+        */
+        //다이얼로그 fragment 오픈 함수 최신방식
+        //this.loadFragment를 사용한 방식이 훨씬 더 세련되고 권장되는 방식
+        //SAPUI5 최신 권장 패턴: SAP 최신 버전의 템플릿에서도 컨트롤러 내장 함수인 this.loadFragment()를 활용해 Promise를 변수에 담아두고 재사용하는 패턴을 표준으로 밀고 있습니다.
+        //syncStyleClass는 SAPUI5에서 다이얼로그나 팝업 같은 컴포넌트가 부모 화면(View 또는 앱)의 스타일과 크기 설정(Content Density)을 그대로 이어받도록 동기화해 주는 함수
+        //sap/ui/core/Fragment 및 Fragment 파라미터가 필요 없음, this.loadFragment쓰면 됨
+        onOpenDialog: function () {
+            if (!this.pDialog) {
+                this.pDialog=this.loadFragment({
+                    name : "sap.training.exc.view.xmlfragment2"
+                }).then(function (oDialog) {
+                    syncStyleClass(this.getOwnerComponent().getContentDensityClass(),
+                    this.getView(), oDialog);
+                    return oDialog;
+                }.bind(this))
+            }
+            this.pDialog.then(function (oDialog) {
+                oDialog.open();
+            })
+        },
+        //다이얼로그 닫기
+        onCloseDialog: function () {
+            this.byId("fragment2dialog").close();
         }
     });
 });

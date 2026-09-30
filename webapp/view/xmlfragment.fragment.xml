@@ -1,0 +1,8 @@
+<!--xml fragment(.fragment.xml) : SAPUI5에서 화면의 일부분을 독립적인 파일로 분리하여 모듈화하고 재사용할 수 있게 해주는 조각(Fragment) 파일-->
+<!--View와 달리 독립적인 생명주기(Lifecycle)를 가지지 않고 부모 뷰에 종속되어 동작하므로 성능상 가볍고 빠르게 로드-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <VBox class="sapUiMediumMarginTop">
+        <Title text="-xml fragment-" level="H3"/>
+        <Text text="이것은 xml fragment(일반 ui fragment)" />
+    </VBox>
+</core:FragmentDefinition>
