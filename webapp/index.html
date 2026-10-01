@@ -23,11 +23,17 @@
         data-sap-ui-onInit : sapui5 엔진 실행 직후 가장 먼저 실행할 작업
         module:sap/ui/core/ComponentSupport는 data-sap-ui-component(컴포넌트 자동 실행 방식) 사용하기 위함
         data-sap-ui-resourceroots : sapui5 엔진이 작업하는 sap.training.exc(네임스페이스) 위치를 자신 로컬 위치("./")로 지정(연결)
+        
+        data-sap-ui-compatVersion="edge" : 가장 최신 표준 기능과 규칙으로 실행 필요한 것이였, xml에 최신 자바스크립트 연산 기능 가능하도록 선언
+        {= ~식~} : 모델의 데이터가 바뀔 때마다 화면의 결과도 자동으로 다시 계산되어 업데이트
+        {:= ~식~} : 페이지가 처음 뜰 때 딱 한 번만 계산하고 끝냅니다. 데이터가 나중에 바뀌어도 화면은 업데이트되지 않지만, 불필요한 감시(리스너)를 안 하므로 성능(자원)을 아낄 수 있습니다.
+        해당 식 내부에 데이터 모델의 데이터 바인딩하고 싶어 -> ${모델이름>/속성값}
         -->
         <script
         id="sap-ui-bootstrap"
         src="https://ui5.sap.com/resources/sap-ui-core.js"
         data-sap-ui-theme="sap_fiori_3"
+        data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
 		data-sap-ui-onInit="module:sap/ui/core/ComponentSupport"
 		data-sap-ui-resourceroots='{

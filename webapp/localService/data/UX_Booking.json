@@ -2077,5 +2077,26 @@
         "__OperationControl": {
             "cancel_booking": true
         }
+    },
+    {
+        "BookingGuid": "7777777777777777",
+        "AirlineID": "AA",
+        "ConnectionNumber": "17",
+        "FlightDate": "2024-05-03",
+        "BookingNumber": "7777",
+        "BookingDate": "2024-04-09",
+        "Class": "Y",
+        "ForeignCurrencyPayment": 663.22,
+        "ForeignCurrency": "CAD",
+        "AgencyNumber": "233",
+        "CustomerGuid": "7777777777777777",
+        "IsCancelled": "",
+        "__EntityControl": {
+            "Deletable": true,
+            "Updatable": true
+        },
+        "__OperationControl": {
+            "cancel_booking": true
+        }
     }
 ]

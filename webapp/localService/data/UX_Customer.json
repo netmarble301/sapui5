@@ -262,5 +262,27 @@
             "Updatable": true
         },
         "SAP__Messages": []
+    },
+    {
+        "CustomerGuid": "7777777777777777",
+        "CustomerNumber": "13",
+        "Form": "Frau",
+        "CustomerName": "이몸등장",
+        "Street": "북부. 777",
+        "PostCode": "7777",
+        "City": "리오네스",
+        "Country": "브리아티나",
+        "Email": "jjh@netmarble.com",
+        "Telephone": "777 7777 7777",
+        "Discount": "99",
+        "changed_at": null,
+        "__CreateByAssociationControl": {
+            "_Bookings": true
+        },
+        "__EntityControl": {
+            "Deletable": true,
+            "Updatable": true
+        },
+        "SAP__Messages": []
     }
 ]

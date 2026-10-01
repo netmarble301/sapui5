@@ -7,7 +7,7 @@
             <Panel class="sapUiResponsiveMargin sapUiHideOnPhone" width="auto" expandable="true" expanded="false" headerText="고객 및 예약 정보">
                 <content>
                     <!--고객 리스트 테이블-->
-                    <!--items에 데이터 모델을 연결하면 테이블에 자동적으로 해당 모델의 데이터들을 반복 생성하고 화면에 렌더링해줌, {데이터모델/} 이렇게 해야함 /은 모델의 최상위 루트를 의미(데이터 배열 모두 가져와야 함)-->
+                    <!--items에 데이터 모델을 연결하면 테이블에 자동적으로 해당 모델의 데이터들을 반복 생성하고 화면에 렌더링해줌, {데이터모델>/} 이렇게 해야함 /은 모델의 최상위 루트를 의미(데이터 배열 모두 가져와야 함)-->
                     <Table id="customerTable" items="{customer>/}" mode="SingleSelectMaster" selectionChange=".onCustomerSelect">
                         <headerToolbar>
                             <OverflowToolbar>

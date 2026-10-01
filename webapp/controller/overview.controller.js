@@ -2,8 +2,8 @@
 //sap/ui/model/Filter : 검색 및 조건 조회 위한 필터 객체 생성
 //sap/ui/model/FilterOperator : Filter를 비교 조건 연산을 정의
 //sap/ui/model/json/JSONModel : 자바스크립트 객체 데이터를 기반으로 클라이언트 측 JSON 모델을 생성하여 뷰와 데이터를 바인딩할 때 사용
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel", "sap/ui/core/Fragment", "sap/ui/core/syncStyleClass"], 
-    function (Controller, Filter, FilterOperator, JSONModel, Fragment, syncStyleClass) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel", "sap/ui/core/Fragment", "sap/ui/core/syncStyleClass", "sap/ui/model/Sorter", "sap/ui/Device"], 
+    function (Controller, Filter, FilterOperator, JSONModel, Fragment, syncStyleClass, Sorter, Device) {
     "use strict";
 
     return Controller.extend("sap.training.exc.controller.overview", {
@@ -11,19 +11,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/mode
         onInit: function () {
             //선택된 고객 정보를 담을 빈 모델 생성 후 뷰에 등록(oModel을 뷰에 연결, selectedCustomer는 뷰에서 쓸 oModel의 별칭), this는 overview컨트롤러 getView는 해당 컨트롤러 연결되어있는 뷰
             var oModel = new JSONModel({});
+            //XMLModel도 존재 이건 여전히 오래된 옛날 방식(레거시 시스템)의 XML 데이터만 제공하는 서버들과 연동하기 위해서 있음, 즉 옛날 방식의 서버와 연동할 상황이 없는 이상 잘 안 씀
             this.getView().setModel(oModel, "selectedCustomer");
         },
 
         //고객 테이블에서 행을 선택 시 이벤트
+        //id="customerTable"테이블의 selectionChange 참고
         onCustomerSelect: function (oEvent) {
+            //클릭된 행 찾기
             //getSource() : 이벤트 발생한 주체(customerTable) 가져옴
             //getSelectedItem() : 해당 테이블에서 클릭된 행 가져옴
-            var oSelectedItem = oEvent.getSource().getSelectedItem();
+            var oSelectedItem = oEvent.getSource().getSelectedItem(); //조심 이때 item은 그냥 행을 의미하는 것, 데이터모델 연결이 아님
             if (!oSelectedItem) {
                 return;
             }
 
-            //선택된 고객의 데이터 객체 가져오기
+            //클릭된 행에 들어있는 실제 데이터(json객체)가져옴, 즉 선택된 고객의 데이터 객체 가져오기
             //customer 모델은 manifest.json의 models 참고
             //getBindingContext() : 클릭한 행이 customer라는 모델과 어떤 데이터로 연결되어 있는지 bindingcontext 가져옴
             //getObject() : 가져온 bindingcontext의 실제 데이터 객체(JSON 객체)를 통째로 추출
@@ -31,8 +34,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/Filter", "sap/ui/mode
             var sCustomerGuid = oSelectedCustomerData.CustomerGuid;
 
             //selectedCustomer 모델에 선택된 고객 데이터를 설정
-            var oSelectedModel = this.getView().getModel("selectedCustomer");
-            oSelectedModel.setData(oSelectedCustomerData);
+            var oSelectedModel = this.getView().getModel("selectedCustomer"); //뷰에 등록되어 있는 "selectedCustomer"라는 이름의 빈 JSON 모델을 가져옴
+            oSelectedModel.setData(oSelectedCustomerData); //selectedcustomer = oselectedmodel
 
             //예약(Booking) 모델에서 해당 고객(CustomerGuid)의 예약 정보만 필터링
             //byId("~") : id가 ~인 테이블 가져옴
